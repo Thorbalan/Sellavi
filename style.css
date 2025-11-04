@@ -68,3 +68,94 @@
     padding: 15px 20px;
   }
 }
+
+
+
+
+
+/* Обща секция */
+.subcategories_top {
+  padding: 40px 0;
+  background-color: #fff;
+}
+
+.subcategories_top .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Контейнер за всеки елемент */
+.media_holder {
+  flex: 1 1 200px;
+  max-width: 220px;
+  text-align: center;
+}
+
+/* Кутията с изображение */
+.thumbnail {
+  border: none;
+  padding: 0;
+  background: #fafafa;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.thumbnail:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Изображение */
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px 12px 0 0;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+/* Текст под изображението */
+.caption {
+  padding: 15px 10px;
+  background-color: #fff;
+}
+
+.caption-title span {
+  font-size: 1.1rem;
+  color: #222;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 5px;
+  transition: color 0.3s ease;
+}
+
+.thumbnail:hover .caption-title span {
+  color: #0077cc;
+}
+
+/* Responsive за мобилни */
+@media (max-width: 768px) {
+  .subcategories_top .row {
+    gap: 20px;
+  }
+
+  .media_holder {
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .media_holder {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
