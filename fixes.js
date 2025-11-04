@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Превод на основни заглавия
       const blogHeader = document.querySelector(".page-header h1");
       if (blogHeader && blogHeader.textContent.trim() === "Blog") {
-        blogHeader.textContent = "Блог";
+        blogHeader.textContent = "Видео уроци";
       }
 
       // Превод на "Recent posts"
