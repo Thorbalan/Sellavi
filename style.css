@@ -1,0 +1,65 @@
+.tutorialdemo {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 40px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    .tutorialdemo .video-wrapper {
+      flex: 1 1 60%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .tutorialdemo iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .tutorialdemo .text-content {
+      flex: 1 1 40%;
+      padding: 10px 0;
+      color: #333;
+    }
+
+    .tutorialdemo .text-content h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+      color: #111;
+    }
+
+    .tutorialdemo .text-content p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .tutorialdemo {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .tutorialdemo .video-wrapper {
+        width: 100%;
+        max-width: 100%;
+        aspect-ratio: 16 / 9;
+        order: 1;
+      }
+
+            .tutorialdemo .text-content {
+              width: 100%;
+              order: 2;
+              padding: 15px 20px;
+          }
+      }      
