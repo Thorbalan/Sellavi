@@ -22,18 +22,18 @@ document.addEventListener("DOMContentLoaded", function () {
         el.innerHTML = el.innerHTML.replace("Read more", "Прочети повече");
     });
     
-  document.querySelectorAll('.caption-text .btn.btn-theme').forEach(btn => {
-    btn.textContent = 'Виж още';
+      document.querySelectorAll('.caption-text .btn.btn-theme').forEach(btn => {
+        btn.textContent = 'Виж още';
+      });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('h2, h3, label').forEach(function(el) {
+          if (el.textContent.trim() === 'Адрес за фактуриране') {
+            el.textContent = 'Адрес за доставка';
+          }
+        });
+      });
+
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('h2, h3, label').forEach(function(el) {
-      if (el.textContent.trim() === 'Адрес за фактуриране') {
-        el.textContent = 'Адрес за доставка';
-      }
-    });
-  });
-
-  });
-
-  
+      
