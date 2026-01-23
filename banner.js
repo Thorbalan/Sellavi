@@ -1,4 +1,3 @@
-<script>
 (function() {
   function fixOwlImages() {
     const owlImages = document.querySelectorAll('.owl-wrapper-outer img, .owl-item img');
@@ -24,7 +23,6 @@
   // Допълнителна защита: повторна проверка след 2 секунди (при lazy load)
   setTimeout(fixOwlImages, 2000);
 })();
-</script>
 
 
 
