@@ -12,19 +12,24 @@
   }
 
   function run() {
-    var module = document.getElementById('banners_module_47374'); /* смени номера на модула */
-    if (!module) return;
+    // взима всички banner модули, независимо от номера
+    var modules = document.querySelectorAll('[id^="banners_module_"]');
+    if (!modules.length) return;
 
-    module.querySelectorAll('picture source').forEach(function (s) {
-      var newSet = stripFixedHeightFromSrcset(s.getAttribute('srcset'));
-      if (newSet && newSet !== s.getAttribute('srcset')) {
-        s.setAttribute('srcset', newSet);
-      }
-    });
+    modules.forEach(function (module) {
+      module.querySelectorAll('picture source').forEach(function (s) {
+        var oldSet = s.getAttribute('srcset');
+        var newSet = stripFixedHeightFromSrcset(oldSet);
 
-    // прерисува картинките
-    module.querySelectorAll('picture img').forEach(function (img) {
-      img.src = img.src; // force reload
+        if (newSet && newSet !== oldSet) {
+          s.setAttribute('srcset', newSet);
+        }
+      });
+
+      // прерисува картинките
+      module.querySelectorAll('picture img').forEach(function (img) {
+        img.src = img.src; // force reload
+      });
     });
   }
 
