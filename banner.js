@@ -1,31 +1,37 @@
-(function() {
-  function fixOwlImages() {
-    const owlImages = document.querySelectorAll('.owl-wrapper-outer img, .owl-item img');
-    owlImages.forEach(img => {
-      img.style.width = '100%';
-      img.style.height = 'auto';
-      img.style.maxWidth = '100%';
-      img.style.display = 'block';
-      img.style.objectFit = 'contain'; // запазва пропорциите
+
+(function () {
+  function stripFixedHeightFromSrcset(srcset) {
+    if (!srcset) return srcset;
+
+    // маха ,h_460 и /h_460 и подобни
+    return srcset
+      .replace(/,h_\d+/g, '')
+      .replace(/\/h_\d+/g, '')
+      .replace(/h_\d+,/g, '')
+      .replace(/h_\d+\//g, '');
+  }
+
+  function run() {
+    var module = document.getElementById('banners_module_47374'); /* смени номера на модула */
+    if (!module) return;
+
+    module.querySelectorAll('picture source').forEach(function (s) {
+      var newSet = stripFixedHeightFromSrcset(s.getAttribute('srcset'));
+      if (newSet && newSet !== s.getAttribute('srcset')) {
+        s.setAttribute('srcset', newSet);
+      }
+    });
+
+    // прерисува картинките
+    module.querySelectorAll('picture img').forEach(function (img) {
+      img.src = img.src; // force reload
     });
   }
 
-  // При първоначално зареждане
-  document.addEventListener('DOMContentLoaded', fixOwlImages);
-
-  // Ако Owl Carousel презарежда слайдовете динамично
-  const observer = new MutationObserver(fixOwlImages);
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  // Допълнителна защита: повторна проверка след 2 секунди (при lazy load)
-  setTimeout(fixOwlImages, 2000);
-  
-})();
-
-
-
-
-
+  // изчакай DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', run);
+  } else {
+    run();
+  }
+})(); /* Resize banner */
