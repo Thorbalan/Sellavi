@@ -1,0 +1,636 @@
+/* ============================================================
+   SELLAVI DEMO — TOTAL REDESIGN
+   style.css  |  thorbalan.github.io/Sellavi/style.css
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+  --c-bg:          #F9F7F4;
+  --c-surface:     #FFFFFF;
+  --c-ink:         #18150F;
+  --c-ink-muted:   #8C8880;
+  --c-border:      #E5E1DA;
+  --c-border-dark: #C8C3BA;
+  --c-accent:      #1C1916;
+  --c-accent2:     #8B6F47;
+  --c-sale:        #B03A2E;
+  --c-gift:        #2E6B52;
+
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'Jost', sans-serif;
+
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:   cubic-bezier(0.4, 0, 0.2, 1);
+
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+body {
+  background: var(--c-bg) !important;
+  font-family: var(--font-body) !important;
+  color: var(--c-ink) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+#header,
+header,
+.header-section,
+.navbar,
+.navbar-default {
+  background: var(--c-surface) !important;
+  border-bottom: 1px solid var(--c-border) !important;
+  box-shadow: none !important;
+}
+
+.logo img,
+.navbar-brand img {
+  max-height: 48px !important;
+  width: auto !important;
+}
+
+.navbar-nav > li > a,
+.nav > li > a {
+  font-family: var(--font-body) !important;
+  font-weight: 400 !important;
+  font-size: 0.80rem !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  color: var(--c-ink) !important;
+  transition: color 0.2s var(--ease-in-out) !important;
+}
+
+.navbar-nav > li > a:hover,
+.nav > li > a:hover {
+  color: var(--c-accent2) !important;
+  background: transparent !important;
+}
+
+/* ============================================================
+   SLIDER DOTS
+   ============================================================ */
+.owl-dots .owl-dot span {
+  background: var(--c-border-dark) !important;
+  border: none !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  transition: background 0.2s, transform 0.2s !important;
+}
+
+.owl-dots .owl-dot.active span {
+  background: var(--c-accent) !important;
+  transform: scale(1.5) !important;
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+.section-title,
+h2.section-title,
+.module-section > .container > h2 {
+  font-family: var(--font-display) !important;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--c-ink) !important;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem) !important;
+  padding-bottom: 0.6rem !important;
+  position: relative;
+}
+
+.section-title::after,
+h2.section-title::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 1px;
+  background: var(--c-accent2);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   CATEGORY CARDS
+   ============================================================ */
+[class*="category-item"],
+[class*="category-layout"] {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  transition: transform 0.35s var(--ease-out),
+              box-shadow 0.35s var(--ease-out) !important;
+}
+
+[class*="category-item"]:hover,
+[class*="category-layout"]:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 40px rgba(24,21,15,0.10) !important;
+}
+
+[class*="category-item"] img {
+  transition: transform 0.5s var(--ease-out) !important;
+}
+
+[class*="category-item"]:hover img {
+  transform: scale(1.04) !important;
+}
+
+[class*="category-item"] h2,
+[class*="category-item"] .caption {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+}
+
+/* ============================================================
+   PRODUCT GRID — CSS Grid override
+   ============================================================ */
+.products.grid,
+.row.products {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)) !important;
+  gap: 1.5rem !important;
+  float: none !important;
+}
+
+.product-item,
+.product-layout {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  float: none !important;
+}
+
+/* ── Card shell ───────────────────────────────────────────── */
+.product-item .thumbnail,
+.product-layout .thumbnail {
+  background: var(--c-surface) !important;
+  border: 1px solid var(--c-border) !important;
+  border-radius: var(--radius-lg) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: box-shadow 0.3s var(--ease-out),
+              transform 0.3s var(--ease-out) !important;
+  box-shadow: none !important;
+}
+
+.product-item .thumbnail:hover,
+.product-layout .thumbnail:hover {
+  box-shadow: 0 12px 36px rgba(24,21,15,0.09) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── Image container ──────────────────────────────────────── */
+.product-item .media,
+.product-layout .media {
+  position: relative !important;
+  overflow: hidden !important;
+  background: #EFECE7 !important;
+  aspect-ratio: 1 / 1 !important;
+  display: block !important;
+}
+
+.product-item .media img.img-fluid,
+.product-layout .media img.img-fluid {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.45s var(--ease-out) !important;
+}
+
+.product-item .thumbnail:hover .media img,
+.product-layout .thumbnail:hover .media img {
+  transform: scale(1.05) !important;
+}
+
+/* ── Wishlist & QuickView ─────────────────────────────────── */
+.add_to_wishlist {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 4 !important;
+}
+
+.quick_view_action {
+  position: absolute !important;
+  bottom: 10px !important;
+  right: 10px !important;
+  z-index: 4 !important;
+}
+
+.btn-wish-list,
+.btn-quick-view {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  border: 1px solid var(--c-border) !important;
+  background: rgba(255,255,255,0.92) !important;
+  color: var(--c-ink) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+  transform: scale(0.82) !important;
+  box-shadow: none !important;
+  transition: opacity 0.22s var(--ease-out),
+              transform 0.22s var(--ease-out),
+              background 0.18s,
+              color 0.18s !important;
+}
+
+.btn-wish-list { transition-delay: 0s !important; }
+.btn-quick-view { transition-delay: 0.05s !important; }
+
+.product-item .thumbnail:hover .btn-wish-list,
+.product-item .thumbnail:hover .btn-quick-view,
+.product-layout .thumbnail:hover .btn-wish-list,
+.product-layout .thumbnail:hover .btn-quick-view {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.btn-wish-list:hover,
+.btn-quick-view:hover {
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border-color: var(--c-accent) !important;
+}
+
+/* ── Ribbon (+ подарък) ───────────────────────────────────── */
+.ribbonbgfn {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  z-index: 3 !important;
+}
+
+.ribbonbgfn div {
+  background: none !important;
+}
+
+.ribbonbgfn div span {
+  display: inline-block;
+  background: var(--c-gift) !important;
+  color: #fff !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.58rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.10em !important;
+  text-transform: uppercase !important;
+  padding: 3px 9px !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* ── Sticker ──────────────────────────────────────────────── */
+.sticker-container {
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+  z-index: 3 !important;
+}
+
+.sticker img {
+  width: 44px !important;
+  height: 44px !important;
+}
+
+/* ── Rating ───────────────────────────────────────────────── */
+.rating_wrapper {
+  padding: 8px 14px 0 !important;
+  justify-content: flex-start !important;
+}
+
+.rating .fa-star {
+  color: #D4A843 !important;
+  font-size: 10px !important;
+}
+
+.reviews_count a {
+  font-size: 0.65rem !important;
+  color: var(--c-ink-muted) !important;
+}
+
+/* ── Caption ──────────────────────────────────────────────── */
+.caption {
+  padding: 10px 14px 2px !important;
+  text-align: left !important;
+}
+
+.caption-title {
+  font-family: var(--font-display) !important;
+  font-size: 1.0rem !important;
+  font-weight: 400 !important;
+  line-height: 1.35 !important;
+  margin: 0 !important;
+}
+
+.caption-title a {
+  color: var(--c-ink) !important;
+  text-decoration: none !important;
+}
+
+.caption-title a:hover {
+  color: var(--c-accent2) !important;
+}
+
+/* ── Price blocks ─────────────────────────────────────────── */
+.upper_price_actions {
+  display: none !important;  /* показваме само долния */
+}
+
+.bottom_price_actions {
+  padding: 10px 14px 14px !important;
+  border-top: 1px solid var(--c-border) !important;
+  margin-top: 8px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+}
+
+.price_item,
+.bottom_price_actions .price {
+  display: flex !important;
+  flex-direction: column !important;
+  line-height: 1.2 !important;
+  gap: 1px !important;
+}
+
+.price_item > span:first-child,
+.bottom_price_actions .price > span:first-child {
+  font-family: var(--font-display) !important;
+  font-size: 1.08rem !important;
+  font-weight: 500 !important;
+  color: var(--c-ink) !important;
+}
+
+.price ins,
+.price_item ins {
+  font-family: var(--font-display) !important;
+  font-size: 1.08rem !important;
+  font-weight: 500 !important;
+  color: var(--c-sale) !important;
+  text-decoration: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.price del,
+.price_item del {
+  font-size: 0.70rem !important;
+  color: var(--c-ink-muted) !important;
+  text-decoration: line-through !important;
+}
+
+.currency_preview {
+  font-family: var(--font-body) !important;
+  font-size: 0.66rem !important;
+  font-weight: 300 !important;
+  color: var(--c-ink-muted) !important;
+}
+
+/* ── Buy button ───────────────────────────────────────────── */
+.add_to_cart .btn {
+  font-family: var(--font-body) !important;
+  font-size: 0.66rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.09em !important;
+  text-transform: uppercase !important;
+  background: var(--c-accent) !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 8px 14px !important;
+  white-space: nowrap !important;
+  transition: background 0.2s var(--ease-in-out),
+              transform 0.15s !important;
+  box-shadow: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+}
+
+.add_to_cart .btn:hover {
+  background: #3D3530 !important;
+  color: #fff !important;
+}
+
+.add_to_cart .btn:active {
+  transform: scale(0.97) !important;
+}
+
+/* ── Card staggered entry animation ──────────────────────── */
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-item { animation: cardReveal 0.5s var(--ease-out) both; }
+.product-item:nth-child(1)  { animation-delay: 0.04s; }
+.product-item:nth-child(2)  { animation-delay: 0.09s; }
+.product-item:nth-child(3)  { animation-delay: 0.14s; }
+.product-item:nth-child(4)  { animation-delay: 0.19s; }
+.product-item:nth-child(5)  { animation-delay: 0.24s; }
+.product-item:nth-child(6)  { animation-delay: 0.29s; }
+.product-item:nth-child(7)  { animation-delay: 0.34s; }
+.product-item:nth-child(8)  { animation-delay: 0.39s; }
+.product-item:nth-child(9)  { animation-delay: 0.44s; }
+
+/* ============================================================
+   GENERAL BUTTONS
+   ============================================================ */
+.btn-theme {
+  font-family: var(--font-body) !important;
+  border-radius: var(--radius-sm) !important;
+  letter-spacing: 0.06em !important;
+  transition: all 0.2s var(--ease-in-out) !important;
+  box-shadow: none !important;
+}
+
+.btn-theme-transparent {
+  background: transparent !important;
+  border: 1px solid var(--c-border-dark) !important;
+  color: var(--c-ink) !important;
+}
+
+.btn-theme-transparent:hover {
+  background: var(--c-accent) !important;
+  border-color: var(--c-accent) !important;
+  color: #fff !important;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer,
+#footer,
+.footer-section {
+  background: var(--c-ink) !important;
+  color: rgba(255,255,255,0.70) !important;
+  border-top: none !important;
+}
+
+footer h4, footer h3,
+.footer-section h4 {
+  font-family: var(--font-display) !important;
+  font-size: 0.82rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.95) !important;
+  margin-bottom: 1rem !important;
+}
+
+footer a,
+.footer-section a {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 0.80rem !important;
+  font-weight: 300 !important;
+  transition: color 0.2s !important;
+  text-decoration: none !important;
+}
+
+footer a:hover,
+.footer-section a:hover {
+  color: rgba(255,255,255,0.95) !important;
+}
+
+/* ============================================================
+   COOKIE BANNER
+   ============================================================ */
+[class*="cookie"],
+.cookie-notice {
+  background: #111 !important;
+  color: rgba(255,255,255,0.80) !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.78rem !important;
+}
+
+[class*="cookie"] a { color: var(--c-accent2) !important; }
+
+[class*="cookie"] .btn,
+[class*="cookie"] button {
+  background: var(--c-accent2) !important;
+  border: none !important;
+  color: #fff !important;
+  font-family: var(--font-body) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.06em !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 6px 18px !important;
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .products.grid,
+  .row.products {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+
+  .caption-title { font-size: 0.88rem !important; }
+
+  .add_to_cart .btn {
+    padding: 6px 10px !important;
+    font-size: 0.60rem !important;
+  }
+
+  .btn-wish-list,
+  .btn-quick-view {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .products.grid,
+  .row.products {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================================================
+   VIDEO TUTORIALS MODULE — оригинални стилове + типографски ъпгрейд
+   ============================================================ */
+.tutorialdemo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 3.5rem auto;
+  font-family: var(--font-body);
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 3rem;
+}
+
+.tutorialdemo:last-child { border-bottom: none; }
+
+.tutorialdemo .video-wrapper {
+  flex: 1 1 60%;
+  aspect-ratio: 16 / 9;
+  background: var(--c-ink);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(24,21,15,0.18);
+}
+
+.tutorialdemo iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.tutorialdemo .text-content {
+  flex: 1 1 40%;
+  padding: 10px 0;
+  color: var(--c-ink);
+}
+
+.tutorialdemo .text-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin: 0 0 0.75rem;
+  color: var(--c-ink);
+}
+
+.tutorialdemo .text-content p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--c-ink-muted);
+}
+
+@media (max-width: 900px) {
+  .tutorialdemo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .tutorialdemo .video-wrapper {
+    width: 100%;
+    order: 1;
+  }
+  .tutorialdemo .text-content {
+    width: 100%;
+    order: 2;
+    padding: 15px 20px;
+  }
+}
